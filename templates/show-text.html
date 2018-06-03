@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block HomeActivated %}
+    <li class="nav-item-active">
+        <a class="nav-link" href="#">Home</a>
+    </li>
+{% endblock %}
+
+{% block ResultsActivated %}
+    <li class="nav-item active">
+        <a class="nav-link" href="#">Resultado<span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+
+{% block AboutActivated %}
+    <li class="nav-item-active">
+        <a class="nav-link" href="#">Sobre</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<textarea name="text" class="form-control" rows="15">{{text}}</textarea>
+{% endblock %}
