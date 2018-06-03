@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>{% block title %}HomePage{% endblock %}</title>
+    <title>{% block title %}Home{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename="css/bootstrap.min.css") }}">
   </head>
 
@@ -21,19 +21,19 @@
                 
                 {% block HomeActivated %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('process_data') }}">Home<span class="sr-only">(current)</span></a>
                 </li>
                 {% endblock %}
                 
                 {% block ResultsActivated %}
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Resultado</a>
+                    <a class="nav-link disabled">Resultado</a>
                 </li>
                 {% endblock %}
 
                 {% block AboutActivated %}
                 <li class="nav-item-active">
-                    <a class="nav-link" href="#">Sobre</a>
+                    <a class="nav-link" href="{{ url_for('about') }}">Sobre</a>
                 </li>
                 {% endblock %}
             </ul>
@@ -42,13 +42,14 @@
 
     <div class="container">     
         <div class="jumbotron">
-            <h1>Navbar example</h1>
-            <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
-            
             {% block content %}
+            <!-- <h1>Texto texto</h1>
+            <p class="lead">Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p> -->
+            
+            
             <div class="form-group">      
                 <form method="post">
-                    <textarea name="text" class="form-control" rows="15"></textarea>
+                    <textarea name="text" class="form-control" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                     <button type="submit" class="btn btn-lg btn-primary">Corrigir</button>
                 </form>
             </div>
@@ -57,7 +58,7 @@
     </div>
 
     <footer class="container">
-      <p>&copy; Company 2017-2018</p>
+      <p>&copy; Universidade do Estado do Amazonas 2017 - {{currentYear}}</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

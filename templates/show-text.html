@@ -4,22 +4,38 @@
 
 {% block HomeActivated %}
     <li class="nav-item-active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{{ url_for('process_data') }}">Home</a>
     </li>
 {% endblock %}
 
 {% block ResultsActivated %}
     <li class="nav-item active">
-        <a class="nav-link" href="#">Resultado<span class="sr-only">(current)</span></a>
+        <a class="nav-link">Resultado<span class="sr-only">(current)</span></a>
     </li>
 {% endblock %}
 
 {% block AboutActivated %}
     <li class="nav-item-active">
-        <a class="nav-link" href="#">Sobre</a>
+        <a class="nav-link" href="{{ url_for('about') }}">Sobre</a>
     </li>
 {% endblock %}
 
 {% block content %}
-<textarea name="text" class="form-control" rows="15">{{text}}</textarea>
+<!-- <textarea name="text" class="form-control" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"> -->
+    <!-- {% for word in text.split() %} {% if word == "This" %} <mark>{{word}}</mark> {% else %} {{word}} {% endif %} {% endfor %}     -->
+    <!-- <mark>{{word}}</mark> -->
+<!-- </textarea> -->
+
+<div class="p-3 mb-2 bg-dark text-white">
+    {% for line in text.splitlines() %} 
+        {% if line == "" %} 
+            <br>
+        {% else %} 
+            {% for word in line.split() %} 
+                {% if not db.queryData(word) %} <u>{{word}}</u> {% else %} {{word}} {% endif %} 
+            {% endfor %}     
+        {% endif %}
+    {% endfor %}
+</div>
+
 {% endblock %}

@@ -1,4 +1,5 @@
 from app.models.database_connect import Connection
+import re
 
 class DataBase:
     db = None
@@ -14,6 +15,9 @@ class DataBase:
 
     def queryData(self, _word):
         cur = self.db.conn.cursor()
-
-        cur.execute("SELECT COUNT(1) FROM word where wrd = '%s';" % _word)
+        
+        _word = re.findall(r'[a-zéúíóáõãêûîôâç\-]*', _word.lower())[0]
+        cur.execute("SELECT COUNT(1) FROM word WHERE wrd = '%s'" % _word)
+        # cur.execute("SELECT COUNT(1) FROM word WHERE LOWER(wrd) LIKE REGEXP_REPLACE(LOWER('%s'), '[^a-zéúíóáõãêûîôâç\-]*', '', 'g')" % _word)
+        
         return cur.fetchone()[0] != 0
