@@ -1,5 +1,4 @@
 import datetime
-from flask import render_template
 from flask import Flask, request, render_template
 
 from app import app
@@ -22,5 +21,4 @@ def process_data():
 @app.route("/about", methods=["GET"])
 def about():
     return render_template('about.html', currentYear = currentYear.year)
-
 

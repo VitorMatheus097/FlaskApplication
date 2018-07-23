@@ -43,14 +43,13 @@
     <div class="container">     
         <div class="jumbotron">
             {% block content %}
-            <!-- <h1>Texto texto</h1>
-            <p class="lead">Texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p> -->
-            
-            
-            <div class="form-group">      
+            <h5>Insira seu texto abaixo:</h5>
+            <div class="form-group" align="center">      
                 <form method="post">
                     <textarea name="text" class="form-control" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-                    <button type="submit" class="btn btn-lg btn-primary">Corrigir</button>
+                    
+                    <br>
+                    <button align="center" style="background: #343a40!important; border-color: #343a40!important" type="submit" class="btn btn-lg btn-primary">Corrigir</button>
                 </form>
             </div>
             {% endblock %}
@@ -58,12 +57,9 @@
     </div>
 
     <footer class="container">
-      <p>&copy; Universidade do Estado do Amazonas 2017 - {{currentYear}}</p>
+      <p align="center">&copy; Universidade do Estado do Amazonas 2017 - {{currentYear}}</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <!-- <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script> -->
-
   </body>
 </html>

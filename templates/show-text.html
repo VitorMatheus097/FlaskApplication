@@ -27,15 +27,29 @@
 <!-- </textarea> -->
 
 <div class="p-3 mb-2 bg-dark text-white">
-    {% for line in text.splitlines() %} 
-        {% if line == "" %} 
+    {%- for line in text.splitlines() -%} 
+        {%- if line == "" -%} 
             <br>
-        {% else %} 
-            {% for word in line.split() %} 
-                {% if not db.queryData(word) %} <u>{{word}}</u> {% else %} {{word}} {% endif %} 
-            {% endfor %}     
-        {% endif %}
-    {% endfor %}
+        {%- else -%} 
+            {%- for ngram in db.makeNgrams("$ $" + line) -%}
+                {%- for response in db.queryData(ngram) -%}
+                    
+                    {%- if response[0] == -1 -%} 
+                        <span> </span>    
+                        <u>{{response[1][0][0]}}</u> 
+                    {%- elif response[0] == 0 -%} 
+                        <span> </span>
+                        <b>{{response[1][0][0]}}</b>
+                    {%- else -%}
+                        {{response[1][0]}}
+                    {%- endif -%}
+                
+                {%- endfor -%}
+            {%- endfor -%} 
+            <br>    
+        {%- endif -%}
+        <br>
+    {%- endfor -%}
 </div>
 
 {% endblock %}
