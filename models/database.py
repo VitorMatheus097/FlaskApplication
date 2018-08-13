@@ -29,7 +29,11 @@ class DataBase:
             words.append((_word,))
             return [(-1, words)] 
         else:
-            return [(0, words)]
+            if nltk.edit_distance(words[0][0], _word) < 5:
+                return [(0, words)]
+            else:
+                words = [((_word,))]
+                return [(-1, words)]
 
     def tryHeuristic(self, ngram, _word, lower_word):
         cur = self.db.conn.cursor()
